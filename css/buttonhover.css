@@ -3,6 +3,7 @@
     padding: 0;
     list-style: none;
     text-decoration: none;
+    /* text-decoration: none 不在字體做任何的修飾動作 */
 }
 
 h3 {
@@ -21,17 +22,26 @@ body {
     padding: 50px 0;
 }
 
+/*
+針對 :before 和 :after，要知道詳細的應用請看下面三篇文章的分享並交叉學習
+https://itw01.com/NN9EKM5.html
+https://ithelp.ithome.com.tw/articles/10196924
+https://www.w3schools.com/cssref/css_selectors.asp
+*/
+
 html *,
 html *::before,
 html *::after {
     box-sizing: border-box;
     -webkit-transition: 0.5s;
     transition: 0.5s
+    /* CSS3 transition 屬性請參考連結說明 http://www.wibibi.com/info.php?tid=CSS3_transition_屬性 */
 }
 
 *:before,
 *::after {
     z-index: -1;
+    /* Z-index 可以用來設置元素的 Z 方向位置，z-index 數字越大的在越上面，反之則在越下面。 */
 }
 
 /*
@@ -48,7 +58,6 @@ html *::after {
     float: left;
     width: 47%;
     margin-left: 3%;
-    /* border-radius: 25px; */
 }
 
 /*....*/
@@ -72,7 +81,7 @@ a:hover {
 }
 
 /*
-[class^="btn-"] 設定把 btn 分成兩欄
+[class^="btn-"] 選取有 class 屬性且值以 btn- 開始的元素
 text-transform: uppercase; 全部都是大寫
 border: 1px solid currentColor; currentColor當前文字的顏色
 */
@@ -88,7 +97,13 @@ border: 1px solid currentColor; currentColor當前文字的顏色
     overflow: hidden;
     border: 1px solid currentColor;
     border-radius: 50px;
+    /* 設定把 btn 分成兩欄 */
 }
+
+/*
+ * W3C 說明：content 屬性與 ::before 和 ::after 一起使用在文檔中生成內容。
+ * 因此，使用 ::before 和 ::after 一定要有 content 否則不會發生作用。
+*/
 
 .btn-1::before {
     content: '';
